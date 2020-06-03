@@ -1,0 +1,17 @@
+{
+  "name": "GoPykh",
+  "displayName": "GoPykh",
+  "expo": {
+    "name": "GoPykh",
+    "slug": "GoPykh",
+    "version": "1.0.0",
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
