@@ -1,13 +1,17 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
 import { View } from 'react-native';
-import { AlignItemTypes, DirectionTypes, JustifyContentTypes } from '../../models/UIModels';
+import { AlignItemTypes, BackgroundTypes, DirectionTypes, JustifyContentTypes } from '../../models/UIModels';
 
 export interface ILayoutProps {
     children: any;
     jc?: JustifyContentTypes;
     ai?: AlignItemTypes;
     direction?: DirectionTypes;
+    bg?: BackgroundTypes;
+    customStyle?: any;
+    widthAuto?: boolean;
+    fullHeight?: boolean;
 }
 
 const Layout: React.FC<ILayoutProps> = ({
@@ -15,9 +19,21 @@ const Layout: React.FC<ILayoutProps> = ({
     jc = JustifyContentTypes.default,
     ai = AlignItemTypes.default,
     direction = DirectionTypes.default,
+    bg = BackgroundTypes.default,
+    widthAuto = false,
+    fullHeight = false,
+    customStyle = null,
 }) => {
-    const layoutStyles = [styles.flex, styles[jc], styles[ai], styles[direction]];
-    console.log(direction);
+    const layoutStyles = [
+        styles.flex,
+        styles[jc],
+        styles[ai],
+        styles[direction],
+        styles[bg],
+        widthAuto && styles.widthAuto,
+        fullHeight && styles.fullHeight,
+        customStyle,
+    ];
     return <View style={layoutStyles}>{children}</View>;
 };
 
@@ -60,6 +76,30 @@ const styles = EStyleSheet.create({
     },
     dr_column: {
         flexDirection: 'column',
+    },
+    bg_white: {
+        backgroundColor: '$white',
+    },
+    bg_black: {
+        backgroundColor: '$black',
+    },
+    bg_grey: {
+        backgroundColor: '$grey',
+    },
+    bg_darkGrey: {
+        backgroundColor: '$darkGrey',
+    },
+    gb_lightGrey: {
+        backgroundColor: '$lightGrey',
+    },
+    bg_skin: {
+        backgroundColor: '$skin',
+    },
+    widthAuto: {
+        width: 'auto',
+    },
+    fullHeight: {
+        height: '100%',
     },
 });
 
