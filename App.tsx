@@ -9,7 +9,6 @@ buildPrimaryColors();
 buildLayoutStyles();
 
 export default function App() {
-    const viewStyles = [];
     return (
         <Provider store={store}>
             <PageBuilder />

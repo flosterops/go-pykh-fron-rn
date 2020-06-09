@@ -15,15 +15,17 @@ interface ISmokeButtonProps {
 }
 
 const SmokeButton: React.FC<ISmokeButtonProps> = ({ onClick }) => {
+
+
     return (
         <Layout
             onPress={() => console.log('123123')}
-            bg={BackgroundTypes.green}
+            bg={BackgroundTypes.yellow}
             ai={AlignItemTypes.center}
             jc={JustifyContentTypes.center}
             customStyle={styles.button}
         >
-            <Title weight={WeightTypes.w900} color={ColorTypes.yellow} fontSize={FontSizeTypes.xxl}>
+            <Title weight={WeightTypes.w900} uppercase color={ColorTypes.white} fontSize={FontSizeTypes.xxl}>
                 go smoke
             </Title>
         </Layout>
@@ -32,7 +34,7 @@ const SmokeButton: React.FC<ISmokeButtonProps> = ({ onClick }) => {
 
 const styles = EStyleSheet.create({
     button: {
-        borderRadius: 1000,
+        borderRadius: 200,
         width: 200,
         height: 200,
     },

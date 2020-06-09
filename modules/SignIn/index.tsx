@@ -13,7 +13,7 @@ import {
     WeightTypes,
 } from '../../models/UIModels';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import {orange, white} from '../../styles/colors';
+import { white } from '../../styles/colors';
 
 const SignIn = ({}) => {
     const [formField, setFormFields] = useState<IFormFieldModel>(getInitialFormFields());
@@ -26,7 +26,7 @@ const SignIn = ({}) => {
 
     return (
         <Layout
-            jc={JustifyContentTypes.spaceBetween}
+            jc={JustifyContentTypes.center}
             fullHeight
             customStyle={styles.container}
             bg={BackgroundTypes.green}

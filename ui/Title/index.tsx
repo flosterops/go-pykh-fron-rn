@@ -11,6 +11,7 @@ interface ITitleProps {
     nowrap?: boolean;
     weight?: WeightTypes;
     customStyles?: any;
+    uppercase?: boolean;
 }
 
 const Title: React.FC<ITitleProps> = ({
@@ -20,6 +21,7 @@ const Title: React.FC<ITitleProps> = ({
     weight = WeightTypes.default,
     underline = false,
     nowrap = false,
+    uppercase = false,
     customStyles,
 }) => {
     const titleStyles = [
@@ -29,6 +31,7 @@ const Title: React.FC<ITitleProps> = ({
         styles[weight],
         underline && styles.underline,
         nowrap && styles.nowrap,
+        uppercase && styles.uppercase,
         customStyles,
     ];
     return <Text style={titleStyles}>{children}</Text>;
@@ -106,6 +109,9 @@ const styles = EStyleSheet.create({
         fontWeight: '900',
     },
     nowrap: {},
+    uppercase: {
+        textTransform: 'uppercase',
+    },
 });
 
 export { Title };

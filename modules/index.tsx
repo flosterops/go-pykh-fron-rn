@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Main } from './Main';
 import routes from '../routes/index.json';
 import { SignIn } from './SignIn';
+import {SignUp} from "./SignUp";
 
 const getRenderingComponent = (component: string): any => {
     switch (component) {
@@ -20,7 +21,7 @@ const getRenderingComponent = (component: string): any => {
 
 const PageBuilder = () => {
     return (
-        <SignIn />
+        <Main />
 
         // <NavigationContainer>
         //     <Stack.Navigator>
