@@ -1,0 +1,12 @@
+[
+    {
+        "id": "2a0288e1-a4b8-4dc0-bbf6-89a341d5a103",
+        "name": "SignIn",
+        "component": "SignIn"
+    },
+    {
+        "id": "44c2441f-db38-45e5-a7e4-aeb1cdbde573",
+        "name": "Main",
+        "component": "Main"
+    }
+]

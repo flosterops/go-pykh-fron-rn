@@ -1,6 +1,8 @@
-const initialState = {};
+import { AppActionTypes, IAppReducerModel } from './types';
 
-export default function (state: any, action: any): any {
+const initialState: IAppReducerModel = {};
+
+export default function (state: IAppReducerModel, action: AppActionTypes): IAppReducerModel {
     switch (action) {
         default:
             return { ...state };

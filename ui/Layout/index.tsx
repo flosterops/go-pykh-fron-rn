@@ -1,6 +1,6 @@
 import React from 'react';
 import EStyleSheet from 'react-native-extended-stylesheet';
-import { View } from 'react-native';
+import { TouchableOpacity, View } from 'react-native';
 import { AlignItemTypes, BackgroundTypes, DirectionTypes, JustifyContentTypes } from '../../models/UIModels';
 
 export interface ILayoutProps {
@@ -12,6 +12,7 @@ export interface ILayoutProps {
     customStyle?: any;
     widthAuto?: boolean;
     fullHeight?: boolean;
+    [key: string]: any;
 }
 
 const Layout: React.FC<ILayoutProps> = ({
@@ -23,6 +24,7 @@ const Layout: React.FC<ILayoutProps> = ({
     widthAuto = false,
     fullHeight = false,
     customStyle = null,
+    ...props
 }) => {
     const layoutStyles = [
         styles.flex,
@@ -34,7 +36,22 @@ const Layout: React.FC<ILayoutProps> = ({
         fullHeight && styles.fullHeight,
         customStyle,
     ];
-    return <View style={layoutStyles}>{children}</View>;
+
+    const { onPress } = props;
+
+    if (!onPress) {
+        return (
+            <View {...props} style={layoutStyles}>
+                {children}
+            </View>
+        );
+    }
+
+    return (
+        <TouchableOpacity {...props} onPress={onPress} style={layoutStyles}>
+            <View>{children}</View>
+        </TouchableOpacity>
+    );
 };
 
 const styles = EStyleSheet.create({
@@ -42,7 +59,6 @@ const styles = EStyleSheet.create({
         width: '100%',
         display: 'flex',
         alignItems: 'stretch',
-        boxSizing: 'border-box',
     },
     jc_flexStart: {
         justifyContent: 'flex-start',
@@ -86,14 +102,38 @@ const styles = EStyleSheet.create({
     bg_grey: {
         backgroundColor: '$grey',
     },
+    bg_transparent: {
+        backgroundColor: 'transparent',
+    },
     bg_darkGrey: {
         backgroundColor: '$darkGrey',
     },
-    gb_lightGrey: {
+    bg_lightGrey: {
         backgroundColor: '$lightGrey',
     },
     bg_skin: {
         backgroundColor: '$skin',
+    },
+    bg_fog: {
+        backgroundColor: '$fog',
+    },
+    bg_orange: {
+        backgroundColor: '$orange',
+    },
+    bg_darkGreen: {
+        backgroundColor: '$darkGreen',
+    },
+    bg_lightBlue: {
+        backgroundColor: '$lightBlue',
+    },
+    bg_yellow: {
+        backgroundColor: '$yellow',
+    },
+    bg_grass: {
+        backgroundColor: '$grass',
+    },
+    bg_green: {
+        backgroundColor: '$green',
     },
     widthAuto: {
         width: 'auto',

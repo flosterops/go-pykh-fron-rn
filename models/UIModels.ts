@@ -29,6 +29,13 @@ export enum ColorTypes {
     lightGrey = 'color_lightGrey',
     darkGrey = 'color_darkGrey',
     skin = 'color_skin',
+    fog = 'color_fog',
+    orange = 'color_orange',
+    darkGreen = 'color_darkGreen',
+    lightBlue = 'color_lightBlue',
+    yellow = 'color_yellow',
+    grass = 'color_grass',
+    green = 'color_green',
 }
 
 export enum FontSizeTypes {
@@ -41,11 +48,26 @@ export enum FontSizeTypes {
 }
 
 export enum BackgroundTypes {
-    default = 'bg_white',
+    default = 'bg_transparent',
     white = 'bg_white',
     black = 'bg_black',
     grey = 'bg_grey',
     darkGrey = 'bg_darkGrey',
     lightgrey = 'gb_lightGrey',
     skin = 'bg_skin',
+    fog = 'bg_fog',
+    orange = 'bg_orange',
+    darkGreen = 'bg_darkGreen',
+    lightBlue = 'bg_lightBlue',
+    yellow = 'bg_yellow',
+    grass = 'bg_grass',
+    green = 'bg_green',
+}
+
+export enum WeightTypes {
+    default = 'weight_500',
+    w300 = 'weight_300',
+    w500 = 'weight_500',
+    w700 = 'weight_700',
+    w900 = 'weight_900',
 }

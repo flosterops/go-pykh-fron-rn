@@ -1,0 +1,26 @@
+[
+    {
+        "id": "a86d0e40-8f32-4889-aec2-8c2fb28f8231",
+        "text": "Login",
+        "field": "login",
+        "type": "text"
+    },
+    {
+        "id": "49257d15-166f-4803-aa47-b57340d187f7",
+        "text": "E-Mail",
+        "field": "email",
+        "type": "text"
+    },
+    {
+        "id": "c3e7fda5-f900-4c15-b6d9-af87506579ff",
+        "text": "Password",
+        "field": "password",
+        "type": "pass"
+    },
+    {
+        "id": "53a5c483-b526-4162-b13a-21b13b956095",
+        "text": "Verify password",
+        "field": "verifyPassword",
+        "type": "pass"
+    }
+]

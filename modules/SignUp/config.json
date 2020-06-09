@@ -1,0 +1,12 @@
+[
+    {
+        "id": "42fd8729-20c6-46ad-affe-0fe6c6cdb188",
+        "text": "Login",
+        "field": "login"
+    },
+    {
+        "id": "d1a8eb85-073f-4024-b222-eae9fd986f09",
+        "text": "Password",
+        "field": "password"
+    }
+]

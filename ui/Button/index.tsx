@@ -9,10 +9,17 @@ interface IButtonProps {
     text: string;
     size?: ButtonSizes;
     color?: string;
+    customStyle?: any;
 }
 
-const CustomButton: React.FC<IButtonProps> = ({ onPress, text, size = ButtonSizes.s, color = black }) => {
-    const buttonStyles = [styles.button, styles[size]];
+const CustomButton: React.FC<IButtonProps> = ({
+    onPress,
+    text,
+    size = ButtonSizes.s,
+    color = black,
+    customStyle = null,
+}) => {
+    const buttonStyles = [styles.button, styles[size], customStyle];
     return (
         <View style={buttonStyles}>
             <Button color={color} title={text} onPress={onPress} />
@@ -35,9 +42,7 @@ const styles = EStyleSheet.create({
     },
     xxl: {
         width: '100%',
-    },
-    button: {
-        height: 35,
+        height: 150,
     },
 });
 
