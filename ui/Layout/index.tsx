@@ -49,7 +49,7 @@ const Layout: React.FC<ILayoutProps> = ({
 
     return (
         <TouchableOpacity {...props} onPress={onPress} style={layoutStyles}>
-            <View>{children}</View>
+            {children}
         </TouchableOpacity>
     );
 };

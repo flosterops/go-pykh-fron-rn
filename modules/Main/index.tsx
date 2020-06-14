@@ -1,22 +1,39 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import EStyleSheet from 'react-native-extended-stylesheet';
 import { connect } from 'react-redux';
-import { Layout } from '../../ui';
+import { fetchFriends, setSelectedFriend } from '../../store/reducers/friendsReducer/actions';
+import { FriendList, ModalComponent, SmokeButton } from '../../widgets';
+import { CustomButton, Layout } from '../../ui';
+import { IFriendModel } from '../../models/FriendModels';
 import { AlignItemTypes, BackgroundTypes, DirectionTypes, JustifyContentTypes } from '../../models/UIModels';
-import { SmokeButton } from '../../widgets/SmokeButton';
-import { fetchFriends } from '../../store/reducers/friendsReducer/actions';
 import mockedFriends from '../../mockedData/friends.json';
-import { FriendList } from '../../widgets';
+import { white } from '../../styles/colors';
 
 interface IMainInterface {
     onGoSmoke: (...args: any) => any;
+    friends: Array<IFriendModel>;
+    fetchFriends: (...args: any) => any;
+    setSelectedFriend: (id: string) => void;
+    selectedFriendIds: Array<string>;
 }
 
-const Main = ({ friends, fetchFriends }: any): React.ReactElement => {
+const Main: React.FC<IMainInterface> = ({
+    friends,
+    fetchFriends,
+    setSelectedFriend,
+    selectedFriendIds,
+}): React.ReactElement => {
+    const [friendsModal, setFriendsModal] = useState<boolean>(false);
+
     useEffect(() => {
         setTimeout(() => {
             fetchFriends(mockedFriends);
         }, 1000);
     }, []);
+
+    const onInviteFriends = () => {
+        setFriendsModal(!friendsModal);
+    };
 
     return (
         <Layout
@@ -26,8 +43,27 @@ const Main = ({ friends, fetchFriends }: any): React.ReactElement => {
             ai={AlignItemTypes.center}
             jc={JustifyContentTypes.center}
         >
-            <FriendList friends={friends} />
+            {friendsModal && (
+                <ModalComponent
+                    onClose={onInviteFriends}
+                    onSubmit={onInviteFriends}
+                    buttonText="Invite"
+                    title="Invite friends"
+                >
+                    <FriendList
+                        friends={friends}
+                        setSelectedFriend={setSelectedFriend}
+                        selectedFriendIds={selectedFriendIds}
+                    />
+                </ModalComponent>
+            )}
             <SmokeButton onClick={(i) => i} />
+            <CustomButton
+                customStyle={styles.invite_btn}
+                onPress={onInviteFriends}
+                color={white}
+                text={'Invite Friends'}
+            />
         </Layout>
     );
 };
@@ -35,8 +71,16 @@ const Main = ({ friends, fetchFriends }: any): React.ReactElement => {
 const ConnectedMain = connect(
     ({ friends }: any) => ({
         friends: friends.friends,
+        selectedFriendIds: friends.selectedFriendIds,
     }),
-    { fetchFriends }
+    { fetchFriends, setSelectedFriend }
 )(Main);
 
 export { ConnectedMain as Main };
+
+const styles = EStyleSheet.create({
+    invite_btn: {
+        width: '100%',
+        marginTop: 50,
+    },
+});

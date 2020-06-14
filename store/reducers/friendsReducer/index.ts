@@ -1,4 +1,4 @@
-import { FETCH_FRIENDS, FriendsReducerActionTypes, IFriendsReducerModel } from './types';
+import { FETCH_FRIENDS, FriendsReducerActionTypes, IFriendsReducerModel, SET_SELECTED_FRIEND } from './types';
 
 const initialState: IFriendsReducerModel = {
     friends: [],
@@ -11,6 +11,11 @@ export default function (state = initialState, action: FriendsReducerActionTypes
             return {
                 ...state,
                 friends: action.payload,
+            };
+        case SET_SELECTED_FRIEND:
+            return {
+                ...state,
+                selectedFriendIds: action.payload,
             };
         default:
             return { ...state };

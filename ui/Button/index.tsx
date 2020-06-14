@@ -13,8 +13,8 @@ interface IButtonProps {
 }
 
 const CustomButton: React.FC<IButtonProps> = ({
-    onPress,
-    text,
+    onPress = (i) => i,
+    text = '',
     size = ButtonSizes.s,
     color = black,
     customStyle = null,
